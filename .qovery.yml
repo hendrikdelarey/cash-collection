@@ -1,0 +1,15 @@
+---
+application:
+  name: "cash-collection"
+  project: "CashCollection"
+  organization: "QoveryCommunity"
+databases:
+- type: "MYSQL"
+  name: "cashcollection"
+  version: "8.0"
+routers:
+- name: "main-cash-collection"
+  routes:
+  - application_name: "cash-collection"
+    paths:
+    - "/*"
