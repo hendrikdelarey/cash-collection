@@ -19,6 +19,7 @@ type OwedMoneyDTO struct {
 	ReferenceCode     string `json:"referenceCode"`
 	CreatedDate       string `json: "createdDate"`
 }
+
 type CollectionDTO struct {
 	ID          string         `json:"id"`
 	Name        string         `json:"name"`
@@ -54,7 +55,7 @@ func updateCollection(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-
+	http.Error(w, "The requested item to update was not found.", http.StatusNotFound)
 }
 
 func createCollection(w http.ResponseWriter, r *http.Request) {
