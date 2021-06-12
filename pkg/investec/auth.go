@@ -50,9 +50,8 @@ func (c *InvestecApi) Authenticate() (AuthResponse, error) {
 	if err != nil {
 		return ret, err
 	}
-	c.auth = &ret
 
-	c.tokenExpireTime = time.Now().Add(time.Duration(c.auth.ExpiresIn) * time.Second)
+	c.tokenExpireTime = time.Now().Add(time.Duration(ret.ExpiresIn) * time.Second)
 
 	return ret, nil
 }
