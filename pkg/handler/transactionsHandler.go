@@ -2,13 +2,14 @@ package handler
 
 import (
 	"encoding/json"
-	"github.com/hendrikdelarey/cash-collection/pkg/investec"
 	"net/http"
+
+	"github.com/hendrikdelarey/cash-collection/pkg/investec"
 )
 
 func getInvestecApiClient() *investec.InvestecApi {
 	creds := investec.AuthCredentials{
-		ClientID: "DummyId",
+		ClientID:     "DummyId",
 		ClientSecret: "DummySecret",
 	}
 	return investec.NewOpenApiClient(creds)
@@ -24,8 +25,8 @@ func GetRecentInvestecTransactions(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error accessing Investec account", http.StatusBadRequest)
 	}
 
-	for _, acc := range(accounts.Accounts) {
-		t, err := client.GetAllTransactionsFromPastDays( acc.AccountID, 30)
+	for _, acc := range accounts.Accounts {
+		t, err := client.GetAllTransactionsFromPastDays(acc.AccountID, 30)
 		if err != nil {
 			http.Error(w, "Error accessing Investec account", http.StatusBadRequest)
 		}

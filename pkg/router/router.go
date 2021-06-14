@@ -5,10 +5,10 @@ import (
 	"github.com/hendrikdelarey/cash-collection/pkg/handler"
 )
 
-func New() {
+func New() *mux.Router {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/collections", handler.GetColletion).Methods("GET")
+	router.HandleFunc("/collections", handler.GetCollection).Methods("GET")
 	router.HandleFunc("/collections", handler.CreateCollection).Methods("POST")
 	router.HandleFunc("/collections/{id}", handler.GetCollection).Methods("GET")
 	router.HandleFunc("/collections/{id}", handler.UpdateCollection).Methods("PUT")
@@ -17,5 +17,7 @@ func New() {
 	router.HandleFunc("/transactions", handler.GetRecentInvestecTransactions).Methods("GET")
 
 	router.HandleFunc("/login", handler.LoginUser).Methods("POST")
-	router.HandleFunc("/register", handler.RegisterUser).Methods("POST")
+	router.HandleFunc("/register", handler.RegisterNewUser).Methods("POST")
+
+	return router
 }

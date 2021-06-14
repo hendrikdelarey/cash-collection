@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+
 	"go.uber.org/zap"
 
 	"github.com/hendrikdelarey/cash-collection/cmd/serve"
@@ -16,7 +17,7 @@ func main() {
 	cmd := &cobra.Command{Use: serviceName}
 
 	logger, err := zap.NewDevelopment()
-	if err == nil {
+	if err != nil {
 		panic(fmt.Sprint("failed to load logger"))
 	}
 

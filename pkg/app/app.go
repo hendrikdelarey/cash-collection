@@ -3,11 +3,12 @@ package app
 import (
 	"context"
 	"errors"
-	"go.uber.org/zap"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"go.uber.org/zap"
 
 	"github.com/hendrikdelarey/cash-collection/pkg/router"
 )
