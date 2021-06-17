@@ -19,8 +19,13 @@ func Run(ctx context.Context, logger *zap.Logger) {
 	r := router.New()
 	logger.Info("app started successfully")
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+
 	server := &http.Server{
-		Addr:    ":8000",
+		Addr:    fmt.Sprintf(":%s", port),
 		Handler: r,
 	}
 
