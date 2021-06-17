@@ -3,8 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/hendrikdelarey/cash-collection/pkg/app"
-
 	"go.uber.org/zap"
 
 	"github.com/hendrikdelarey/cash-collection/cmd/serve"
@@ -26,6 +24,4 @@ func main() {
 	if err := cmd.Execute(); err != nil {
 		logger.Fatal("fatal error", zap.Error(err))
 	}
-
-	app.Run(ctx, logger)
 }
