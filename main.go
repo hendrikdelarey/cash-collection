@@ -22,4 +22,7 @@ func main() {
 	}
 
 	cmd.AddCommand(serve.Command(ctx, logger))
+	if err := cmd.Execute(); err != nil {
+		logger.Fatal("fatal error", zap.Error(err))
+	}
 }

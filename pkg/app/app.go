@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -19,8 +20,13 @@ func Run(ctx context.Context, logger *zap.Logger) {
 	logger.Info("app started successfully")
 
 	server := &http.Server{
-		Addr:    "8000",
+		Addr:    ":8000",
 		Handler: r,
+	}
+
+	err := server.ListenAndServe()
+	if err != nil {
+		panic(fmt.Errorf("errror creating api listen and serve: %e", err))
 	}
 
 	idleConns := make(chan struct{})
