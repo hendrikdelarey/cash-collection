@@ -1,1 +1,1 @@
-web: ./bin/cash-collection serve
+web: cash-collection
